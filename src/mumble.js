@@ -12,14 +12,14 @@
 /**
  * Definition of a speech callback.
  *
- * @callback speechCallback
+ * @callback SpeechCallback
  * @param {event} event The original event object.
  */
 
 /**
  * Definition of a command object.
  *
- * @typedef {object} command
+ * @typedef {object} Command
  *
  * @property {string} name The command identifier.
  * @property {string|RegExp} command The command in regex form (can be string or object).
@@ -29,15 +29,15 @@
 /**
  * Definition of an options object.
  *
- * @typedef {object} options
+ * @typedef {object} Options
  *
  * @property {string} [language=en-US] A 4-letter language code, e.g. en-US.
  * @property {boolean} [autoRestart=true] Whether to allow auto restarting the speech recognizer.
  * @property {boolean} [continuous] Whether the speech recognizer should act as a dictation device.
- * @property {integer} [maxAlternatives=5] The max number of alternative transcripts from the speech recognizer.
+ * @property {integer} [maxAlternatives=5] The max number of alternative transcripts from the speech recognizer (defaults to 5).
  * @property {boolean} [debug=false] Whether to enable debug logging.
- * @property {command[]} [commands] An array of commands, can also be added with addCommand().
- * @property {speechCallback[]} [callbacks] An object describing various callbacks to events.
+ * @property {Command[]} [commands] An array of commands, can also be added with addCommand().
+ * @property {SpeechCallback[]} [callbacks] An object describing various callbacks to events (start, end, speech, recognizeMatch, recognizeNoMatch, error).
  */
 
 (function(name, definition) {
@@ -58,7 +58,7 @@
 		 * @constructor
 		 * @alias module:mumble
 		 *
-		 * @param {options} options An options object.
+		 * @param {Options} options An options object.
 		 */
 		var Mumble = function(options) {
 			var _recognizer = null;
@@ -188,7 +188,7 @@
 			 * Gets a previously added command.
 			 *
 			 * @param {string} name A command identifier.
-			 * @return {command} A command.
+			 * @return {Command} A command.
 			 */
 			this.getCommand = function(name) {
 				var found = null;

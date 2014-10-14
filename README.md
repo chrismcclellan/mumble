@@ -37,7 +37,16 @@ var mumble = new Mumble({
 		action: function(query) {
 			// google something..
 		}
-	}]
+	}],
+
+	// define global callbacks (see docs for all)
+	callbacks: {
+		start: function(event) {
+			console.log('Starting..');
+		}
+
+		// start, end, speech, recognizeMatch, etc
+	}
 });
 
 // add a command afterwards, or anytime

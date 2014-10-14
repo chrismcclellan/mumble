@@ -17,12 +17,13 @@
     * [mumble.setMaxAlternatives(maxAlternatives)](#module_mumble#setMaxAlternatives)
     * [mumble.setContinuous(continuous)](#module_mumble#setContinuous)
     * [mumble.setDebug(debug)](#module_mumble#setDebug)
+* [_options](#module__options)
 
 **Typedefs**
 
-* [callback: speechCallback](#speechCallback)
-* [type: command](#command)
-* [type: options](#options)
+* [callback: SpeechCallback](#SpeechCallback)
+* [type: Command](#Command)
+* [type: Options](#Options)
  
 <a name="module_mumble"></a>
 #mumble
@@ -53,7 +54,7 @@ Module entrypoint/constructor.
 
 **Params**
 
-- options <code>[options](#options)</code> - An options object.  
+- options <code>[Options](#Options)</code> - An options object.  
 
 <a name="module_mumble#start"></a>
 ###mumble.start()
@@ -99,7 +100,7 @@ Gets a previously added command.
 
 - name `string` - A command identifier.  
 
-**Returns**: [command](#command) - A command.  
+**Returns**: [Command](#Command) - A command.  
 <a name="module_mumble#setLanguage"></a>
 ###mumble.setLanguage(language)
 Sets the language of the speech recognizer.
@@ -140,8 +141,11 @@ Enables or disabled debug logging to the console.
 
 - debug `boolean`  
 
-<a name="speechCallback"></a>
-#callback: speechCallback
+<a name="module__options"></a>
+#_options
+**Type**: [Options](#Options)  
+<a name="SpeechCallback"></a>
+#callback: SpeechCallback
 Definition of a speech callback.
 
 **Params**
@@ -149,8 +153,8 @@ Definition of a speech callback.
 - event `event` - The original event object.  
 
 **Type**: `function`  
-<a name="command"></a>
-#type: command
+<a name="Command"></a>
+#type: Command
 Definition of a command object.
 
 **Properties**
@@ -160,8 +164,8 @@ Definition of a command object.
 - action `function` - A callback that will be run when the command matches speech with the matched parameters.  
 
 **Type**: `object`  
-<a name="options"></a>
-#type: options
+<a name="Options"></a>
+#type: Options
 Definition of an options object.
 
 **Properties**
@@ -171,7 +175,7 @@ Definition of an options object.
 - continuous `boolean` - Whether the speech recognizer should act as a dictation device.  
 - maxAlternatives `integer` - The max number of alternative transcripts from the speech recognizer.  
 - debug `boolean` - Whether to enable debug logging.  
-- commands <code>[Array.&lt;command&gt;](#command)</code> - An array of commands, can also be added with addCommand().  
-- callbacks <code>[Array.&lt;speechCallback&gt;](#speechCallback)</code> - An object describing various callbacks to events.  
+- commands <code>[Array.&lt;Command&gt;](#Command)</code> - An array of commands, can also be added with addCommand().  
+- callbacks <code>[Array.&lt;SpeechCallback&gt;](#SpeechCallback)</code> - An object describing various callbacks to events.  
 
 **Type**: `object`  
