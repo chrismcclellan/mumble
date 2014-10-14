@@ -1,56 +1,70 @@
-*annyang!*
------------------------------------------------
+#mumble.js
+A simple Javascript framework for adding voice commands to a web site using the web speech recognition API.
+Supports RegEx command syntax and the CommonJS/node.js/AMD module syntax.
 
-A tiny javascript SpeechRecognition library that lets your users control your site with voice commands.
+Forked from and inspired by https://github.com/TalAter/annyang.
 
-annyang has no dependencies, weighs just 2kb, and is free to use and modify under the MIT license.
+##Demo
+For a demo of the original library (annyang.js), see https://www.talater.com/annyang. The end-user experience is basically the same.
 
-Demo & Tutorial
----------------
-[Play with some live speech recognition demos](https://www.talater.com/annyang)
+##Usage
+- If using node.js with browserify for example you can run `npm install mumble-js` within your app to get the latest version. Then `require('mumble')` depending on your paths.
+- If you're using a plain web app include mumble.js or mumble.min.js directly on your site.
 
-Technical Documentation and API
--------------------------------
-[Docs and full API reference](https://github.com/TalAter/annyang/blob/master/docs/README.md)
+Then define some commands and start the device:
 
-Hello World
------------
-It's as easy as adding [one javascript file](//cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js) to your document, and defining the commands you want.
 ````html
-<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js"></script>
-<script>
-if (annyang) {
-  // Let's define a command.
-  var commands = {
-    'hello': function() { alert('Hello world!'); }
-  };
+// if using node.js
+var Mumble = require('./libs/mumble');
 
-  // Add our commands to annyang
-  annyang.addCommands(commands);
+// for all options, see the docs
+var mumble = new Mumble({
+	language: 'en-US',
+	debug: false, // set to true to get some detailed information about what's going on
 
-  // Start listening.
-  annyang.start();
-}
-</script>
+	// define some commands using regex or a simple string
+	commands: [{
+		name: 'clock',
+		command: 'what time is it',
+
+		action: function() {
+			console.log(new Date());
+		}
+	}, {
+		name: 'google',
+		command: /google (.+)/,
+
+		action: function(query) {
+			// google something..
+		}
+	}]
+});
+
+// add a command afterwards, or anytime
+mumble.addCommand('youtube', /youtube (.+)/, function(query) {
+	// youtube something
+});
+
+// start listening
+mumble.start();
 ````
-**Check out some [live speech recognition demos and advanced samples](https://www.talater.com/annyang), then read the full [API Docs](https://github.com/TalAter/annyang/blob/master/docs/README.md).**
 
-(annyang) would like to use your microphone
--------------------------------------------
-![](http://i.imgur.com/Z3zooUC.png)
-
+##Microphone permissions and HTTP(S)
 Chrome's implementation of SpeechRecognition behaves differently based on the protocol used:
 
 - `https://` Asks for permission once and remembers the choice.
-
 - `http://`  Asks for permission repeatedly **on every page load**. Results are also returned significantly slower in HTTP.
 
 For a great user experience, don't compromise on anything less than HTTPS (an SSL certificate can be as cheap as $5).
 
-Author
-------
-Tal Ater: [@TalAter](https://twitter.com/TalAter)
+While developing, you can use a self-signed SSL certificate described here: https://www.sslshopper.com/article-how-to-create-and-install-an-apache-self-signed-certificate.html.
 
-License
--------
-Licensed under [MIT](https://github.com/TalAter/annyang/blob/master/LICENSE).
+##API Documentation
+Check out mumble.md in the docs/ folder for the public API methods and all available options.
+
+##Authors
+- Johan Johansson: https://github.com/swemaniac
+- Tal Ater: https://github.com/TalAter (the original annyang.js author)
+
+##License
+Licensed under [MIT](https://github.com/swemaniac/mumble/blob/master/LICENSE).
