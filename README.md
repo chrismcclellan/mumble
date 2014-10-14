@@ -60,7 +60,7 @@ For a great user experience, don't compromise on anything less than HTTPS (an SS
 While developing, you can use a self-signed SSL certificate described here: https://www.sslshopper.com/article-how-to-create-and-install-an-apache-self-signed-certificate.html.
 
 ##API Documentation
-Check out mumble.md in the docs/ folder for the public API methods and all available options.
+Check out [mumble.md in the docs/ folder](https://github.com/swemaniac/mumble/blob/master/docs/mumble.md) for the public API methods and all available options.
 
 ##Authors
 - Johan Johansson: https://github.com/swemaniac
