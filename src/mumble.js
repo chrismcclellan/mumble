@@ -1,5 +1,5 @@
 /*!*
- * mumble.js v1.0.0
+ * mumble.js v1.0.1
  * https://github.com/swemaniac/mumble
  *
  * A simple framework for adding voice commands to a web site using the web speech recognition API.
@@ -139,6 +139,10 @@
 			 * or a RegExp object. Either way it will be converted to a RegExp object with
 			 * the ignoreCase flag set.
 			 *
+			 * **Example**
+			 *
+			 * `addCommand('appointment', /^book (.+) for me (today|tomorrow) at (\d+)$/, function(appointment, date, hour) { })`
+			 *
 			 * @param {string} name A command identifier.
 			 * @param {string|RegExp} command The command in regex form (can be string or object).
 			 * @param {function} action A callback that will be run when the command matches speech.
@@ -151,7 +155,8 @@
 				}
 
 				// wrap the command in a RegExp object with the ignoreCase flag
-				var commandExp = new RegExp(typeof(command) == 'string' ? command : command.source, 'i');
+				var commandSrc = typeof(command) == 'string' ? ('^' + command + '$') : command.source;
+				var commandExp = new RegExp(commandSrc, 'i');
 
 				_commands.push({
 					name: name,
