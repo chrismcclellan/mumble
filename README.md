@@ -8,7 +8,7 @@ Forked from and inspired by https://github.com/TalAter/annyang.
 For a demo of the original library (annyang.js), see https://www.talater.com/annyang. The end-user experience is basically the same.
 
 ##Usage
-- If using node.js with browserify for example you can run `npm install mumble-js` within your app to get the latest version. Then `require('mumble')` depending on your paths.
+- If using node.js with browserify for example you can run `npm install mumble-js` within your app to get the latest version. Then `require('mumble-js')`.
 - If you're using a plain web app include mumble.js or mumble.min.js directly on your site.
 
 Then define some commands and start the device:
