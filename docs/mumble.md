@@ -17,7 +17,6 @@
     * [mumble.setMaxAlternatives(maxAlternatives)](#module_mumble#setMaxAlternatives)
     * [mumble.setContinuous(continuous)](#module_mumble#setContinuous)
     * [mumble.setDebug(debug)](#module_mumble#setDebug)
-* [_options](#module__options)
 
 **Typedefs**
 
@@ -141,9 +140,6 @@ Enables or disabled debug logging to the console.
 
 - debug `boolean`  
 
-<a name="module__options"></a>
-#_options
-**Type**: [Options](#Options)  
 <a name="SpeechCallback"></a>
 #callback: SpeechCallback
 Definition of a speech callback.
@@ -173,9 +169,9 @@ Definition of an options object.
 - language `string` - A 4-letter language code, e.g. en-US.  
 - autoRestart `boolean` - Whether to allow auto restarting the speech recognizer.  
 - continuous `boolean` - Whether the speech recognizer should act as a dictation device.  
-- maxAlternatives `integer` - The max number of alternative transcripts from the speech recognizer.  
+- maxAlternatives `integer` - The max number of alternative transcripts from the speech recognizer (defaults to 5).  
 - debug `boolean` - Whether to enable debug logging.  
 - commands <code>[Array.&lt;Command&gt;](#Command)</code> - An array of commands, can also be added with addCommand().  
-- callbacks <code>[Array.&lt;SpeechCallback&gt;](#SpeechCallback)</code> - An object describing various callbacks to events.  
+- callbacks <code>[Array.&lt;SpeechCallback&gt;](#SpeechCallback)</code> - An object describing various callbacks to events (start, end, speech, recognizeMatch, recognizeNoMatch, error).  
 
 **Type**: `object`  
