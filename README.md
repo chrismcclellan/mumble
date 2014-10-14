@@ -1,6 +1,6 @@
 #mumble.js
 A simple Javascript framework for adding voice commands to a web site using the web speech recognition API.
-Supports RegEx command syntax and the CommonJS/node.js/AMD module syntax.
+Supports RegEx command syntax and the CommonJS/AMD module syntax.
 
 Forked from and inspired by https://github.com/TalAter/annyang.
 
@@ -14,44 +14,48 @@ For a demo of the original library (annyang.js), see https://www.talater.com/ann
 Then define some commands and start the device:
 
 ````html
-// if using node.js
-var Mumble = require('./libs/mumble');
+// if using node.js, else leave out
+var Mumble = require('mumble-js');
 
 // for all options, see the docs
 var mumble = new Mumble({
-	language: 'en-US',
-	debug: false, // set to true to get some detailed information about what's going on
+    language: 'en-US',
+    debug: false, // set to true to get some detailed information about what's going on
 
-	// define some commands using regex or a simple string
-	commands: [{
-		name: 'clock',
-		command: 'what time is it',
+    // define some commands using regex or a simple string for exact matching
+    commands: [{
+        name: 'appointment',
+        command: /^book (.+) for me (today|tomorrow) at (\d+)$/,
 
-		action: function() {
-			console.log(new Date());
-		}
-	}, {
-		name: 'google',
-		command: /google (.+)/,
+        action: function(type, date, hour) {
+            console.log('Making an appointment for %s %s at %d', type, date, hour);
+        }
+    }, {
+        name: 'google',
+        command: /^google (.+) for me\s?(please)?$/,
 
-		action: function(query) {
-			// google something..
-		}
-	}],
+        action: function(query, polite) {
+            if (polite) {
+                // google the query
+            } else {
+                console.log('I will google that for you but only if you say please');
+            }
+        }
+    }],
 
-	// define global callbacks (see docs for all)
-	callbacks: {
-		start: function(event) {
-			console.log('Starting..');
-		}
+    // define global callbacks (see docs for all)
+    callbacks: {
+        start: function(event) {
+            console.log('Starting..');
+        }
 
-		// start, end, speech, recognizeMatch, etc
-	}
+        // start, end, speech, recognizeMatch, etc
+    }
 });
 
 // add a command afterwards, or anytime
-mumble.addCommand('youtube', /youtube (.+)/, function(query) {
-	// youtube something
+mumble.addCommand('clock', 'what is the time', function() {
+    console.log(new Date());
 });
 
 // start listening
