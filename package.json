@@ -1,6 +1,6 @@
 {
   "name": "mumble-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Javascript framework for adding voice commands to a web site using the web speech recognition API. Based on annyang.js.",
   "author": "Johan Johansson <johan@bazooka.se>",
   "homepage": "https://github.com/swemaniac/mumble",

@@ -75,7 +75,7 @@ Gets a reference to the SpeechRecognition object.
 **Returns**: `SpeechRecognition`  
 <a name="module_mumble#addCommand"></a>
 ###mumble.addCommand(name, command, action)
-Adds a command.The command syntax can be a string with or without any regex instructions,or a RegExp object. Either way it will be converted to a RegExp object withthe ignoreCase flag set.
+Adds a command.The command syntax can be a string with or without any regex instructions,or a RegExp object. Either way it will be converted to a RegExp object withthe ignoreCase flag set.**Example**`addCommand('appointment', /^book (.+) for me (today|tomorrow) at (\d+)$/, function(appointment, date, hour) { })`
 
 **Params**
 
