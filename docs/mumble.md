@@ -1,4 +1,4 @@
-#Index
+# Index
 
 **Modules**
 
@@ -25,11 +25,11 @@
 * [type: Options](#Options)
  
 <a name="module_mumble"></a>
-#mumble
+# mumble
 Module mumble.
 
 <a name="exp_module_mumble"></a>
-##class: Mumble ⏏
+## class: Mumble ⏏
 **Members**
 
 * [class: Mumble ⏏](#exp_module_mumble)
@@ -48,7 +48,7 @@ Module mumble.
   * [mumble.setDebug(debug)](#module_mumble#setDebug)
 
 <a name="exp_new_module_mumble"></a>
-###new Mumble(options)
+### new Mumble(options)
 Module entrypoint/constructor.
 
 **Params**
@@ -56,26 +56,39 @@ Module entrypoint/constructor.
 - options <code>[Options](#Options)</code> - An options object.  
 
 <a name="module_mumble#start"></a>
-###mumble.start()
+### mumble.start()
 Call to start listening for speech.
 
 <a name="module_mumble#stop"></a>
-###mumble.stop()
+### mumble.stop()
 Call to stop listening for speech.
 
 <a name="module_mumble#isAvailable"></a>
-###mumble.isAvailable()
+### mumble.isAvailable()
 Check if the SpeechRecognition object is supported.
 
 **Returns**: `boolean`  
 <a name="module_mumble#getSpeechRecognitionObject"></a>
-###mumble.getSpeechRecognitionObject()
+### mumble.getSpeechRecognitionObject()
 Gets a reference to the SpeechRecognition object.
 
 **Returns**: `SpeechRecognition`  
+
+___
+
 <a name="module_mumble#addCommand"></a>
-###mumble.addCommand(name, command, action)
-Adds a command.The command syntax can be a string with or without any regex instructions,or a RegExp object. Either way it will be converted to a RegExp object withthe ignoreCase flag set.**Example**`addCommand('appointment', /^book (.+) for me (today|tomorrow) at (\d+)$/, function(appointment, date, hour) { })`
+### mumble.addCommand(name, command, action)
+Adds a command.
+
+The command syntax can be a string with or without any regex instructions,
+or a RegExp object. Either way it will be converted to a RegExp object with
+the ignoreCase flag set.
+
+**Example**
+
+```javascript
+addCommand('appointment', /^book (.+) for me (today|tomorrow) at (\d+)$/, function(appointment, date, hour) { })
+```
 
 **Params**
 
@@ -83,8 +96,10 @@ Adds a command.The command syntax can be a string with or without any regex in
 - command `string` | `RegExp` - The command in regex form (can be string or object).  
 - action `function` - A callback that will be run when the command matches speech.  
 
+___
+
 <a name="module_mumble#removeCommand"></a>
-###mumble.removeCommand(name)
+### mumble.removeCommand(name)
 Removes a command.
 
 **Params**
@@ -92,7 +107,7 @@ Removes a command.
 - name `string` - The command identifier.  
 
 <a name="module_mumble#getCommand"></a>
-###mumble.getCommand(name)
+### mumble.getCommand(name)
 Gets a previously added command.
 
 **Params**
@@ -100,48 +115,69 @@ Gets a previously added command.
 - name `string` - A command identifier.  
 
 **Returns**: [Command](#Command) - A command.  
+
+___
+
 <a name="module_mumble#setLanguage"></a>
-###mumble.setLanguage(language)
+### mumble.setLanguage(language)
 Sets the language of the speech recognizer.
 
 **Params**
 
 - language `string` - A 4 letter language code (e.g. en-US).  
 
+___
+
 <a name="module_mumble#setAutoRestart"></a>
-###mumble.setAutoRestart(autoRestart)
-Sets whether the speech recognizer should be auto restartedafter an "end" event.
+### mumble.setAutoRestart(autoRestart)
+Sets whether the speech recognizer should be auto restarted
+after an "end" event.
 
 **Params**
 
 - autoRestart `boolean`  
 
+___
+
 <a name="module_mumble#setMaxAlternatives"></a>
-###mumble.setMaxAlternatives(maxAlternatives)
-Sets the max number of alternative transcripts that thespeech recognizer should return.Mumble will try to match a command to each of these transcripts.
+### mumble.setMaxAlternatives(maxAlternatives)
+Sets the max number of alternative transcripts that the
+speech recognizer should return.
+
+Mumble will try to match a command to each of these transcripts.
 
 **Params**
 
 - maxAlternatives `integer`  
 
+___
+
 <a name="module_mumble#setContinuous"></a>
-###mumble.setContinuous(continuous)
-Sets whether the speech recognizer should act as a dictation device ora one-shot command device.In HTTPS, turn off continuous mode for faster results.In HTTP, turn on continuous mode for much slower results, but no repeating security notices.
+### mumble.setContinuous(continuous)
+Sets whether the speech recognizer should act as a dictation device or
+a one-shot command device.
+
+In HTTPS, turn off continuous mode for faster results.
+In HTTP, turn on continuous mode for much slower results, but no repeating security notices.
 
 **Params**
 
 - continuous `boolean` - The mode of the speech recognizer.  
 
+___
+
 <a name="module_mumble#setDebug"></a>
-###mumble.setDebug(debug)
+### mumble.setDebug(debug)
 Enables or disabled debug logging to the console.
 
 **Params**
 
 - debug `boolean`  
 
+___
+
 <a name="SpeechCallback"></a>
-#callback: SpeechCallback
+# callback: SpeechCallback
 Definition of a speech callback.
 
 **Params**
@@ -149,8 +185,11 @@ Definition of a speech callback.
 - event `event` - The original event object.  
 
 **Type**: `function`  
+
+___
+
 <a name="Command"></a>
-#type: Command
+# type: Command
 Definition of a command object.
 
 **Properties**
@@ -160,8 +199,11 @@ Definition of a command object.
 - action `function` - A callback that will be run when the command matches speech with the matched parameters.  
 
 **Type**: `object`  
+
+___
+
 <a name="Options"></a>
-#type: Options
+# type: Options
 Definition of an options object.
 
 **Properties**
